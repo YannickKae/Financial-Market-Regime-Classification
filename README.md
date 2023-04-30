@@ -13,7 +13,7 @@ Value investing is a strategy focusing on securities with cheap fundamental indi
 
 Momentum investing focuses on the recent price performance of securities, assuming that those with strong recent performance will continue to perform strong in the future, and vice versa. This approach is based on the idea that market trends and investor sentiment can drive the price of a security, and these trends may persist for some time before reversing.
 
-Value and momentum strategies tend to be negatively correlated because value is countercyclical while momentum is procyclical. Therefore, we will focus on those two strategies.
+Value and momentum strategies typically exhibit negative correlation, as value is countercyclical while momentum is procyclical. Consequently, our focus will be on these two strategies. That both strategies are profitable on average can be attributed to value operating on longer-term time frames, while momentum operates on shorter-term time frames.
 
 ## Methods
 
