@@ -24,3 +24,10 @@ Value and momentum strategies tend to be negatively correlated because value is 
 **Hidden Markov Models (HMMs)** are statistical models representing a system that transitions between hidden states over time, with each state emitting observable data. HMMs are particularly useful in modeling time series data, as they capture the underlying structure and dynamics of the data, making them well-suited for financial time series analysis.
 
 **Gaussian Mixture Models (GMMs)** are probabilistic models that represent data as a mixture of multiple Gaussian distributions. This method estimates the parameters of these Gaussian distributions and the probabilities of each data point belonging to each distribution. GMMs can be used for clustering, classification, or density estimation and are especially useful when dealing with data that has multiple underlying distributions.
+
+### Useful Links
+
+- [Federal Reserve Economic Data](https://fred.stlouisfed.org/)
+- [Online Data by Robert Shiller](http://www.econ.yale.edu/~shiller/data.htm)
+- [How Do Factor Premia Vary Over Time? (Factor Data Monthly)](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly)
+- [Classifying market regimes (Macrosynergy Research)](https://research.macrosynergy.com/classifying-market-regimes/)
