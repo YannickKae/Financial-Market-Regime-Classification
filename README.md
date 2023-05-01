@@ -9,7 +9,9 @@ Following the financial crisis, quantitative value strategies have experienced a
 - Hidden Markov Models
 - Gaussian Mixture Models
 
-## Value vs. Momentum
+## Theory
+
+### Value vs. Momentum
 
 Value investing is a strategy focusing on securities with cheap fundamental indicators, such as low price-to-earnings or price-to-book ratios. The belief is that these undervalued securities will appreciate in price eventually. This approach relies on the idea that the market may not accurately price a security's true value in the short term, but its price will converge to its true value in the long term.
 
@@ -17,7 +19,7 @@ Momentum investing focuses on the recent price performance of securities, assumi
 
 Value and momentum strategies typically exhibit negative correlation, as value is countercyclical while momentum is procyclical. Consequently, our focus will be on these two strategies. That both strategies are profitable on average can be attributed to value operating on longer-term time frames, while momentum operates on shorter-term time frames.
 
-## Methods
+### Methods
 
 **Random Forests** is a machine learning algorithm that constructs numerous decision trees during training and outputs the majority vote of individual trees for classification or the mean prediction for regression. This method is known for its robustness and ability to handle complex data structures.
 
@@ -27,7 +29,7 @@ Value and momentum strategies typically exhibit negative correlation, as value i
 
 **Gaussian Mixture Models (GMMs)** are probabilistic models that represent data as a mixture of multiple Gaussian distributions. This method estimates the parameters of these Gaussian distributions and the probabilities of each data point belonging to each distribution. GMMs can be used for clustering, classification, or density estimation and are especially useful when dealing with data that has multiple underlying distributions.
 
-### Useful Links
+#### Useful Links
 
 - [Federal Reserve Economic Data](https://fred.stlouisfed.org/)
 - [Online Data by Robert Shiller](http://www.econ.yale.edu/~shiller/data.htm)
