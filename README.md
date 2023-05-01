@@ -1,5 +1,7 @@
 # Market Regime Classification
 
+![Chameleons adapt to their environment](Header.jpeg)
+
 Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of various machine learning models for regime classification:
 
 - Random Forests
