@@ -7,12 +7,19 @@
   <i>Chameleons adapt to their environment</i>
 </p>
 
-Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of various machine learning models for regime classification:
+Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of various supervised methods for regime classification:
 
+- Linear Probability Model
+- Logistic Regression
+- Discriminant Analysis
+- Naive Bayes
+- K-Nearest Neighbors
+- Support Vector Machines
+- Decision Trees
 - Random Forests
-- Wasserstein k-means Clustering
-- Hidden Markov Models
-- Gaussian Mixture Models
+- XGBoost
+- Learning Vector Quantization
+- Neural Networks
 
 ## Theory
 
