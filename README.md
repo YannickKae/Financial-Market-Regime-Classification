@@ -7,19 +7,12 @@
   <i>Chameleons adapt to their environment</i>
 </p>
 
-Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of various supervised methods for regime classification:
+Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of three supervised methods for binary regime classification. Due to the results of Fernández-Delgado et al. (2014), we focus in the following methods:
 
-- Linear Probability Model
-- Logistic Regression
-- Discriminant Analysis
-- Naive Bayes
-- K-Nearest Neighbors
-- Support Vector Machines
-- Decision Trees
-- Random Forests
-- XGBoost
-- Learning Vector Quantization
-- Neural Networks
+- Linear Probability Model (base line model)
+- Random Forest
+- Support Vector Machine
+- Multi-layer Perceptron
 
 ## Theory
 
@@ -33,13 +26,13 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 ### Methods
 
-**Random Forests** is a machine learning algorithm that constructs numerous decision trees during training and outputs the majority vote of individual trees for classification or the mean prediction for regression. This method is known for its robustness and ability to handle complex data structures.
+**Linear Probability Model** (LPB): This is a simple linear regression model applied to binary classification problems. It models the probability of a binary outcome as a linear function of the input features. Although it may not be the most accurate method for classification tasks, it serves as a useful baseline model to compare against more sophisticated techniques.
 
-**Wasserstein k-means Clustering** is an unsupervised learning method that groups data points based on similarity, minimizing the Wasserstein distance between clusters. This method is particularly useful when dealing with data distributions that are not easily separated by traditional distance metrics.
+**Random Forest** (RF): This is an ensemble learning method that constructs multiple decision trees and combines their predictions to produce a more accurate and robust result. By averaging the predictions of the individual trees, it can reduce overfitting and improve generalization. Random Forests are versatile and can be used for both classification and regression tasks, making them a popular choice for various machine learning problems.
 
-**Hidden Markov Models (HMMs)** are statistical models representing a system that transitions between hidden states over time, with each state emitting observable data. HMMs are particularly useful in modeling time series data, as they capture the underlying structure and dynamics of the data, making them well-suited for financial time series analysis.
+**Support Vector Machines** (SVM): These are a class of supervised learning algorithms used for classification and regression tasks. In classification problems, SVM aims to find the best hyperplane that separates the different classes with the maximum margin. It can efficiently handle high-dimensional data and is particularly effective when the number of features is greater than the number of samples. SVMs can be used with various kernel functions, which allows for capturing complex, nonlinear relationships between the input features and the target variable.
 
-**Gaussian Mixture Models (GMMs)** are probabilistic models that represent data as a mixture of multiple Gaussian distributions. This method estimates the parameters of these Gaussian distributions and the probabilities of each data point belonging to each distribution. GMMs can be used for clustering, classification, or density estimation and are especially useful when dealing with data that has multiple underlying distributions.
+**Multi-layer Perceptron** (MLP): These are a type of feedforward artificial neural network (NN) that consists of multiple layers of nodes or neurons. MLPs include an input layer, one or more hidden layers, and an output layer. They are trained using a backpropagation algorithm, which minimizes the error between the predicted output and the actual target by adjusting the weights of the connections between the neurons. MLPs can be used for a wide range of tasks, including classification and regression problems, and they are capable of capturing complex, nonlinear relationships between input features and target variables.
 
 #### Useful Links
 
