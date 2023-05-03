@@ -7,7 +7,7 @@
   <i>Chameleons adapt to their environment</i>
 </p>
 
-Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of three supervised methods for binary regime classification. Due to the results of Fernández-Delgado et al. (2014), we focus in the following methods:
+Following the financial crisis, quantitative value strategies have experienced a decade of underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of three supervised methods for binary regime classification. Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), we focus in the following methods:
 
 - Linear Probability Model (base line model)
 - Random Forest
