@@ -34,6 +34,8 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 **Multi-layer Perceptron** (MLP): These are a type of feedforward artificial neural network (NN) that consists of multiple layers of nodes or neurons. MLPs include an input layer, one or more hidden layers, and an output layer. They are trained using a backpropagation algorithm, which minimizes the error between the predicted output and the actual target by adjusting the weights of the connections between the neurons. MLPs can be used for a wide range of tasks, including classification and regression problems, and they are capable of capturing complex, nonlinear relationships between input features and target variables.
 
+## [Google Collab](https://colab.research.google.com/drive/1B3bjmygoIgoEoLlFEYaCiCX3Nd05OXxh?usp=sharing)
+
 #### Useful Links
 
 - [Federal Reserve Economic Data](https://fred.stlouisfed.org/)
