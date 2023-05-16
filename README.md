@@ -45,3 +45,4 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 - [Time Series Forecasting as Supervised Learning](https://machinelearningmastery.com/time-series-forecasting-supervised-learning/)
 - [Random Forest for Time Series Forecasting](https://machinelearningmastery.com/random-forest-for-time-series-forecasting/)
 - [How to Develop Multilayer Perceptron Models for Time Series Forecasting](https://machinelearningmastery.com/how-to-develop-multilayer-perceptron-models-for-time-series-forecasting/)
+- [Return Data](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly)
