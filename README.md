@@ -37,7 +37,10 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 ## Results
 
-### Time Period 1
+Since the data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
+This allowed us to see how the trade-off between more features & less data vs. less features & more data behaves.
+
+### Time Period 1 (2003 - 2023)
 
 
 
