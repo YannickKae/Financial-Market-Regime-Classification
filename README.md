@@ -1,10 +1,10 @@
 # Market Regime Classification
 
 <p align="center">
-  <img src="Header.jpeg" alt="Chameleons adapt to their environment" style="width:100%">
+  <img src="Value vs. Momentum.png" alt="Value vs. Momentum" style="width:100%">
 </p>
 <p align="center">
-  <i>Chameleons adapt to their environment</i>
+  <i>Cross-Asset Value vs. Momentum</i>
 </p>
 
 Following the financial crisis, quantitative value strategies have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of four supervised methods for binary (Value vs. Momentum) regime classification.
