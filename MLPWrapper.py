@@ -1,6 +1,5 @@
-#The problem with using the BayesSearchCV function from the scikit-optimize library with the MLPClassifier function from scikit-learn is that the MLPClassifier takes the number of neurons and hidden layers as a tuple (for example, (50, 50) for two hidden layers with 50 neurons each). However, the BayesSearchCV function cannot optimize tuples as parameters. To get around this problem, we need to use a little trick.
-
-We implemented a wrapper class for the MLPClassifier that takes the number of neurons and hidden layers as separate decoubled parameters. By soing so, we can use BayesSearchCV, which we definittely want.
+# The problem with using the BayesSearchCV function from the scikit-optimize library with the MLPClassifier function from scikit-learn is that the MLPClassifier takes the number of neurons and hidden layers as a tuple (for example, (50, 50) for two hidden layers with 50 neurons each).
+# However, the BayesSearchCV function cannot optimize tuples as parameters. To get around this problem, we need to use a little trick. We implemented a wrapper class for the MLPClassifier that takes the number of neurons and hidden layers as separate decoubled parameters. By soing so, we can use BayesSearchCV, which we definittely want.
 
 class MLPWrapper(MLPClassifier):
     def __init__(self, layer_size=100, num_layers=1, alpha=0.0001, activation='relu'):
@@ -40,7 +39,6 @@ class MLPWrapper(MLPClassifier):
                                    solver='lbfgs', 
                                    learning_rate='adaptive', 
                                    max_iter=100000, 
-                                   warm_start=True,
                                    early_stopping=True)
         
     def fit(self, X, y):
