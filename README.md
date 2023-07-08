@@ -1,4 +1,4 @@
-# Market Regime Classification
+# Financial Market Regime Classification
 
 <p align="center">
   <img src="Value vs. Momentum.png" alt="Value vs. Momentum" style="width:100%">
