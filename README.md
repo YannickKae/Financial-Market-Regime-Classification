@@ -35,14 +35,26 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 **Multi-layer Perceptron** (MLP): These are a type of artificial neural network consisting of at least three layers of neurons: an input layer, one or more "hidden" layers, and an output layer. Each layer is fully connected to the next, with each node receiving a weighted sum of inputs from the previous layer to which an activation function is applied.
 
+## Data
+
+
+
 ## Results
 
-Since the data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
+Since our data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
 This allowed us to see how the trade-off between more features & less data vs. less features & more data behaves.
 
 ### Time Period 1 (2003 - 2023)
 
+### Time Period 2 (1976 - 2023)
 
+### Time Period 3 (1971 - 2023)
+
+### Time Period 4 (1965 - 2023)
+
+### Time Period 5 (1954 - 2023)
+
+###
 
 #### Links
 
