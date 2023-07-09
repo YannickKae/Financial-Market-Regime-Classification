@@ -7,8 +7,8 @@
   <i>Cross-Asset Value vs. Momentum</i>
 </p>
 
-Following the financial crisis, quantitative value strategies have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes by evaluating the performance of four supervised methods for binary (Value vs. Momentum) regime classification.
-Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), we focus in the following methods:
+Following the financial crisis, quantitative value strategies have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aimed to identify correponding regimes and implement tactical allocation changes based on four supervised methods for binary (Value vs. Momentum) regime classification.
+Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), we focused on the following methods:
 
 - Logistic Regression (base line model)
 - Random Forest
@@ -37,9 +37,9 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 ## Data
 
-From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), we had access to monthly returns for both strategies dating back to 1926. Using this data, we extracted additional features, including rolling cumulative performance, volatility, and correlation. We supplemented this with key financial economic variables sourced from the FRED database.
+From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), we had access to monthly returns for both strategies dating back to 1926. Using this data, we extracted additional features, including rolling cumulative performance, volatility, and correlation. We supplemented this with key financial economic variables sourced from the [FRED database](https://stlouisfed.shinyapps.io/macro-snapshot/#financial).
 
-The data from these the latter varied in length, confronting us with a challenging trade-off - should we prioritize having more features or more historical data? To resolve this, we conducted a bootstrapping test. The purpose of this was to ascertain whether shorter feature time series were redundant (null hypothesis) and therefore could be discarded in favor of having more historical data.
+The data from the latter varied in length, confronting us with a challenging trade-off - should we prioritize having more features or more historical data? To resolve this, we conducted a bootstrapping test. The purpose of this was to ascertain whether shorter feature time series were redundant (null hypothesis) and therefore could be discarded in favor of having more historical data, or not (alternative hypothesis).
 The null hat to be rejected multiple times. Consequently, we repeated the models' training and testing process multiple times, using different data sets along the described trade-off.
 
 This iterative approach gave us the opportunity to observe and understand how this trade-off played out in our specific case.
@@ -59,7 +59,7 @@ This allowed us to see how the trade-off between more features & less data vs. l
 
 ### Time Period 5 (1954 - 2023)
 
-###
+### Time Period 6 (1929 - 2023)
 
 #### Links
 
