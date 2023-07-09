@@ -37,7 +37,7 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 ## Data
 
-From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), we had access to monthly returns for both strategies dating back to 1926. Using this data, we extracted additional features, including rolling cumulative performance, volatility, and correlation. We supplemented this with key financial economic variables sourced from the [FRED database](https://stlouisfed.shinyapps.io/macro-snapshot/#financial).
+From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), we had access to monthly returns for both strategies dating back to 1926. Using this data, we extracted additional features, including rolling cumulative performance, volatility, and correlation. We supplemented them with key financial macroeconomic indicators sourced from the [FRED database](https://stlouisfed.shinyapps.io/macro-snapshot/#financial).
 
 The data from the latter varied in length, confronting us with a challenging trade-off - should we prioritize having more features or more historical data? To resolve this, we conducted a bootstrapping test. The purpose of this was to ascertain whether shorter feature time series were redundant (null hypothesis) and therefore could be discarded in favor of having more historical data, or not (alternative hypothesis).
 The null hat to be rejected multiple times. Consequently, we repeated the models' training and testing process multiple times, using different data sets along the described trade-off.
