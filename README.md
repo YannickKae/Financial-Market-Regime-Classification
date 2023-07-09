@@ -44,6 +44,13 @@ The null hat to be rejected multiple times. Consequently, we repeated the models
 
 This iterative approach gave us the opportunity to observe and understand how this trade-off played out in our specific case.
 
+<p align="center">
+  <img src="Data.png" alt="Data" style="width:100%">
+</p>
+<p align="center">
+  <i>Unbalanced Data</i>
+</p>
+
 ## Results
 
 Since our data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
