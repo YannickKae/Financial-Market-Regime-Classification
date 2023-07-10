@@ -58,18 +58,18 @@ This allowed us to see how the trade-off between more features & less data vs. l
 
 ### Time Period 1 (Training: 2003-2016 | Testing: 2017-2023)
 
+<p align="center">
+  <img src="Test Sharpe Ratios (Time Period 1).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
+</p>
+<p align="center">
+  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios</i>
+</p>
+
 ### Time Period 2 (1976 - 2023)
 
 ### Time Period 3 (1971 - 2023)
 
 ### Time Period 4 (1965 - 2023)
-
-<p align="center">
-  <img src="Test Sharpe Ratios (Time Period 4).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
-</p>
-<p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios</i>
-</p>
 
 ### Time Period 5 (1954 - 2023)
 
