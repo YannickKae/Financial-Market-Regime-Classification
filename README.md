@@ -56,7 +56,7 @@ This iterative approach gave us the opportunity to observe and understand how th
 Since our data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
 This allowed us to see how the trade-off between more features & less data vs. less features & more data behaves.
 
-### Time Period 1 (Training: 2003-2016 | Testing: 2017-2023)
+### Time Period 1 (2003-2023)
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 1).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
