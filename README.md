@@ -19,7 +19,7 @@ Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers
 
 ### Value vs. Momentum
 
-- **Value** is a strategy that focuses on securities with cheap fundamentals, such as low price-to-earnings ratios. The idea is that these undervalued securities will mean-revert in price. This approach is based on the idea that while the market may not accurately price a security's true value in the short term, over the long term its price will converge back to its true value.
+- **Value** is a strategy that focuses on securities with cheap fundamentals, such as low price-to-earnings ratios. This approach is based on the idea that while the market may not accurately price a security's true value in the short term, over the long term its price will mean revert back to its true value.
 
 - **Momentum** focuses on the recent price performance of securities, assuming that those with strong recent performance will continue to perform strong in the future, and vice versa. This approach is based on the idea that market trends and investor sentiment can drive the price of a security, and these trends may persist for some time before reversing. Side remark: Momentum is not Growth, the actual antagonist of Value.
 
