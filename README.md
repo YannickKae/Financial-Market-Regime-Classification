@@ -7,10 +7,10 @@
   <i>Cross-Asset Value vs. Momentum</i>
 </p>
 
-Following the financial crisis, quantitative value strategies have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aimed to identify correponding regimes and implement tactical allocation changes based on four supervised methods for binary (Value vs. Momentum) regime classification.
+Following the financial crisis, quantitative cross-sectional value strategies, expecially in equities, have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes based on four distinct supervised machine learning methods for binary (Value vs. Momentum) regime classification.
 Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), we focused on the following methods:
 
-- Logistic Regression (base line model)
+- Logistic Regression (baseline model)
 - Random Forest
 - Support Vector Machine
 - Multi-layer Perceptron
@@ -34,6 +34,8 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 - **Random Forest** (RF): This is a bagging based ensemble technique, which creates an ensemble of multiple decision tree models and uses the majority decision of these trees for prediction. Each individual tree in the Random Forest is trained on a random subset of the training data (called bootstrap samples) and uses a random selection of features to find the best split at each node of the tree. This randomness leads to increased diversity among individual trees and helps decreasing variance.
 
 - **Multi-layer Perceptron** (MLP): These are a type of artificial neural network consisting of at least three layers of neurons: an input layer, one or more "hidden" layers, and an output layer. Each layer is fully connected to the next, with each node receiving a weighted sum of inputs from the previous layer to which an activation function is applied.
+
+Tuning and selection of thiese models was done by cross-validation based on [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities.
 
 ## Data
 
