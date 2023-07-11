@@ -31,7 +31,7 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 $$ P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n)}} $$
 
-- **Support Vector Machines** (SVM): These are a family of supervised learning algorithms used for classification and regression problems. In the context of binary classification, SVMs attempt to find an optimal hyperplane that separates the two classes. Specifically, we use the C-Support Vector Classification (C-SVC) variant because it is particularly good at avoiding overfitting based on the regularization hyper paramater 'C'. Technically, it controls the trade-off between achieving the largest possible margin and minimizing classification errors.
+- **Support Vector Machines** (SVM): In the context of binary classification, SVMs attempt to find an optimal hyperplane that separates the two classes. Specifically, we use the C-Support Vector Classification (C-SVC) variant because it is particularly good at avoiding overfitting based on the regularization hyper paramater 'C'. Technically, it controls the trade-off between achieving the largest possible margin and minimizing classification errors.
 
 $$ f(X) = sign\left(\sum_{i} α_i * y_i * K(X_i, X) - ρ\right) $$
 
@@ -66,7 +66,7 @@ This iterative approach gave us the opportunity to observe and understand how th
 ## Results
 
 In each case, the dataset was split 70/30 into a training and a test dataset, with the former used for hyperparameter tuning, feature selection, etc., and the latter used exclusively to test the performance of the Tactical Asset Allocation (TAA) models.
-To evaluate them, we tested their respective Sharpe Ratios (SR) against the Sharpe Ratio of a naive 50/50 portfolio (BM) according to the following pair of hypotheses using a bootstrapping test, assuming monthly rebalancing and no transaction costs.
+To evaluate them, we tested their respective Sharpe Ratios (SR) against the Sharpe Ratio of a naive 50/50 portfolio (BM), according to the following pair of hypotheses. To do so, we condict a bootstrapping test, assuming monthly rebalancing and no transaction costs.
 
 $$ H_0 : SR_{TAA} \leq SR_{BM} $$
 
@@ -224,11 +224,11 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 
 ## Coclusion
 
-In conclusion, our findings show that the baseline model effectively mirrors the naive 50/50 benchmark portfolio. Throughout the model selection and hyperparamater tuning process, it was always greatly  simplied, coupled with moderate L1 regularization. The base model's inability to extract any discernible advantage typically indicates a lack of exploitable predictive signal within the data. Consequently, this implies that more flexible models tend to predominantly overfit on noise, which is supported by our results: The Multilayer Perceptron (MLP) frequently demonstrated superior performance on the training set yet consistently underperformed on the test set, evaluated by the its Sharpe Ratio. Nevertheless, its non-risk-adjusted performance was mostly superior.
+In conclusion, our findings show that the baseline model basically mirrors the naive 50/50 benchmark portfolio. Throughout the model selection and hyperparamater tuning process, it was always greatly  simplied, coupled with moderate L1 regularization. The base model's inability to extract any discernible advantage typically indicates a lack of exploitable predictive signal within the data. Consequently, this implies that more flexible models tend to predominantly overfit on noise, which is supported by our results: The Multilayer Perceptron (MLP) frequently demonstrated superior performance on the training set yet consistently underperformed on the test set, evaluated by its Sharpe Ratio. Nevertheless, its non-risk-adjusted performance was mostly superior.
 
 This respository underscores the well-known difficulty of market timing, even when leveraging advanced machine learning models. It serves as a reminder of the complex, unpredictable dynamics of financial markets.
 
-In subsequent research, several ideas could be explored:
-- The potential of model ensembling, such as generalized stacking, deserves further attention. Such an approach might amalgamate the strengths of multiple models, thereby enhancing overall performance.
-- Our study has relied upon data from a diversified basket of asset classes. A more granular approach focusing on individual markets and their unique dynamics may yield more potent insights and predictions.
-- The performance of models specifically tailored for time series analysis, like Recurrent Neural Networks (RNNs), warrants investigation. Given their design, these models could potentially capture complex temporal patterns more effectively, thereby improving predictive accuracy.
+Several ideas could be explored in further research:
+- The potential of model ensembling, such as generalized stacking, deserves further attention. Such an approach could combine the strengths of multiple models, thereby improving overall performance.
+- Our study relied on data from diversified baskets of asset classes. A more granular approach, focusing on individual markets and their unique dynamics, may yield stronger insights and predictions.
+- The performance of models specifically designed for time series problems, such as recurrent neural networks (RNNs), warrants investigation.
