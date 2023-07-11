@@ -76,6 +76,13 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 
 #### Cumulative Performance
 
+<p align="center">
+  <img src="Test Performances (Time Period 1).png" alt="Test Performances (Time Period 1)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (2003-2023)</i>
+</p>
+
 #### Sharpe Ratio
 
 - **Logistic Regression** p-value: 52.25%
@@ -84,15 +91,22 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 - **Multi-layer Perceptron** p-value: 46.12%
 
 <p align="center">
-  <img src="Test Sharpe Ratios (Time Period 1).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
+  <img src="Test Sharpe Ratios (Time Period 1).png" alt="Test Sharpe Ratios (Time Period 1)" style="width:100%">
 </p>
 <p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (2003-2023)</i>
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (2003-2023)</i>
 </p>
 
 ### Time Period 2 (1976-2023 | 36 Features)
 
 #### Cumulative Performance
+
+<p align="center">
+  <img src="Test Performances (Time Period 2).png" alt="Test Performances (Time Period 2)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (1976-2023)</i>
+</p>
 
 #### Sharpe Ratio
 
@@ -105,12 +119,19 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
   <img src="Test Sharpe Ratios (Time Period 2).png" alt="Test Sharpe Ratios (Time Period 2)" style="width:100%">
 </p>
 <p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (1976 - 2023)</i>
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (1976-2023)</i>
 </p>
 
 ### Time Period 3 (1971-2023 | 34 Features)
 
 #### Cumulative Performance
+
+<p align="center">
+  <img src="Test Performances (Time Period 3).png" alt="Test Performances (Time Period 3)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (1971-2023)</i>
+</p>
 
 #### Sharpe Ratio
 
@@ -123,12 +144,19 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
   <img src="Test Sharpe Ratios (Time Period 3).png" alt="Test Sharpe Ratios (Time Period 3)" style="width:100%">
 </p>
 <p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (1971 - 2023)</i>
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (1971-2023)</i>
 </p>
 
 ### Time Period 4 (1965-2023 | 33 Features)
 
 #### Cumulative Performance
+
+<p align="center">
+  <img src="Test Performances (Time Period 4).png" alt="Test Performances (Time Period 4)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (1965-2023)</i>
+</p>
 
 #### Sharpe Ratio
 
@@ -137,9 +165,23 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 - **Random Forest** p-value: 44.20%
 - **Multi-layer Perceptron** p-value: 78.83%
 
+<p align="center">
+  <img src="Test Sharpe Ratios (Time Period 4).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (1965-2023)</i>
+</p>
+
 ### Time Period 5 (1954-2023 | 30 Features)
 
 #### Cumulative Performance
+
+<p align="center">
+  <img src="Test Performances (Time Period 5).png" alt="Test Performances (Time Period 5)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (1954-2023)</i>
+</p>
 
 #### Sharpe Ratio
 
@@ -148,9 +190,45 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 - **Random Forest** p-value: 45.02%
 - **Multi-layer Perceptron** p-value: 30.33%
 
-### Time Period 6 (1929-2023 | )
+<p align="center">
+  <img src="Test Sharpe Ratios (Time Period 5).png" alt="Test Sharpe Ratios (Time Period 5)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (1954-2023)</i>
+</p>
+
+### Time Period 6 (1929-2023 | 29 Features)
 
 #### Cumulative Performance
 
+<p align="center">
+  <img src="Test Performances (Time Period 6).png" alt="Test Performances (Time Period 6)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Performances vs. Benchmark Performance (1929-2023)</i>
+</p>
+
 #### Sharpe Ratio
 
+- **Logistic Regression** p-value: 50.63%
+- **Support Vector Machine** p-value: 61.16%
+- **Random Forest** p-value: 41.09%
+- **Multi-layer Perceptron** p-value: 90.43%
+
+<p align="center">
+  <img src="Test Sharpe Ratios (Time Period 6).png" alt="Test Sharpe Ratios (Time Period 6)" style="width:100%">
+</p>
+<p align="center">
+  <i>Model Sharpe Rattios vs. Benchmark Sharpe Ratios (1929-2023)</i>
+</p>
+
+## Coclusion
+
+In conclusion, our findings show that the baseline model effectively mirrors the naive 50/50 benchmark portfolio. Throughout the model selection and hyperparamater tuning process, it always greatly  simplied, incorporating pronounces L1 regularization. The base model's inability to extract any discernible advantage typically indicated a lack of exploitable predictive signal within the data. Consequently, this suggests that more flexible models tend to predominantly overfit on noise, which is supported by our results. The Multilayer Perceptron (MLP) frequently demonstrated superior performance on the training set yet consistently underperformed on the test set, measured by the its Sharpe Ratio. Nevertheless, its non-risk-adjusted performance was mostly superior.
+
+This respository underscores the well-known difficulty of market timing, even when leveraging advanced machine learning models. It serves as a vivid reminder of the complex, unpredictable dynamics that govern financial markets.
+
+In subsequent research, several intriguing avenues could be explored:
+- The potential of model ensembling, such as generalized stacking, deserves further attention. Such an approach might amalgamate the strengths of multiple models, thereby enhancing overall performance.
+- Our study has relied upon data from a diversified basket of asset classes. A more granular approach focusing on individual markets and their unique dynamics may yield more potent insights and predictions.
+- The performance of models specifically tailored for time series analysis, like Recurrent Neural Networks (RNNs), warrants investigation. Given their design, these models could potentially capture complex temporal patterns more effectively, thereby improving predictive accuracy.
