@@ -29,13 +29,23 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 - **Logistic Regression** (LPB): This is one of the most fundamental models, especially for binary classification problems, such as the one in this case. The basic principle is to use a sigmoid function to model the probability of occurrence of a particular class y, given X. The sigmoid function takes real numbers as input and outputs values in the range [0, 1], allowing the output to be interpreted as a probability.
 
+$$ P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n)}} $$
+
 - **Support Vector Machines** (SVM): These are a family of supervised learning algorithms used for classification and regression problems. In the context of binary classification, SVMs attempt to find an optimal hyperplane that separates the two classes. Specifically, we use the C-Support Vector Classification (C-SVC) variant because it is particularly good at avoiding overfitting based on the regularization hyper paramater 'C'. Technically, it controls the trade-off between achieving the largest possible margin and minimizing classification errors.
+
+$$ f(X) = sign\left(\sum_{i} α_i * y_i * K(X_i, X) - ρ\right) $$
 
 - **Random Forest** (RF): This is a bagging based ensemble technique, which creates an ensemble of multiple decision tree models and uses the majority decision of these trees for prediction. Each individual tree in the Random Forest is trained on a random subset of the training data (called bootstrap samples) and uses a random selection of features to find the best split at each node of the tree. This randomness leads to increased diversity among individual trees and helps decreasing variance.
 
+$$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
+
 - **Multi-layer Perceptron** (MLP): These are a type of artificial neural network consisting of at least three layers of neurons: an input layer, one or more "hidden" layers, and an output layer. Each layer is fully connected to the next, with each node receiving a weighted sum of inputs from the previous layer to which an activation function is applied.
 
-Tuning and selection of thiese models was done by cross-validation based on [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities.
+$$ f(X) = \sigma\left( w^{[3]} \cdot \sigma\left( w^{[2]} \cdot \sigma\left( w^{[1]} X + b^{[1]} \right) + b^{[2]} \right) + b^{[3]} \right) $$
+
+Tuning and selection of these models was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities.
+
+$$ H_{b}(y, \hat{y}) = -y \cdot log(\hat{y}) - (1 - y) \cdot log(1 - \hat{y}) $$
 
 ## Data
 
@@ -55,34 +65,96 @@ This iterative approach gave us the opportunity to observe and understand how th
 
 ## Results
 
-Since our data was very unbalanced and we could not always assume with sufficient probability that a shorter feature time series is redundant, we ran the training & testing procedure multiple times on different data.
-This allowed us to see how the trade-off between more features & less data vs. less features & more data behaves.
+In each case, the dataset was split 70/30 into a training and a test dataset, with the former used for hyperparameter tuning, feature selection, etc., and the latter used exclusively to test the performance of the Tactical Asset Allocation (TAA) models.
+To evaluate them, we tested their respective Sharpe Ratios (SR) against the Sharpe Ratio of a naive 50/50 portfolio (BM) according to the following pair of hypotheses using a bootstrapping test, assuming monthly rebalancing and no transaction costs.
 
-### Time Period 1 (2003-2023)
+$$ H_0 : SR_{TAA} \leq SR_{BM} $$
+
+$$ H_1 : SR_{TAA} > SR_{BM} $$
+
+### Time Period 1 (2003-2023 | 43 Features)
+
+#### Cumulative Performance
+
+#### Sharpe Ratio
+
+- **Logistic Regression** p-value: 52.25%
+- **Support Vector Machine** p-value: 61.72%
+- **Random Forest** p-value: 59.88%
+- **Multi-layer Perceptron** p-value: 46.12%
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 1).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
 </p>
 <p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios</i>
+  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (2003-2023)</i>
 </p>
 
-### Time Period 2 (1976 - 2023)
+### Time Period 2 (1976-2023 | 36 Features)
+
+#### Cumulative Performance
+
+#### Sharpe Ratio
+
+- **Logistic Regression** p-value: 52.25%
+- **Support Vector Machine** p-value: 61.72%
+- **Random Forest** p-value: 59.88%
+- **Multi-layer Perceptron** p-value: 46.12%
 
 <p align="center">
-  <img src="Test Sharpe Ratios (Time Period 2).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
+  <img src="Test Sharpe Ratios (Time Period 2).png" alt="Test Sharpe Ratios (Time Period 2)" style="width:100%">
 </p>
 <p align="center">
-  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios</i>
+  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (1976 - 2023)</i>
 </p>
 
-### Time Period 3 (1971 - 2023)
+### Time Period 3 (1971-2023 | 34 Features)
 
-### Time Period 4 (1965 - 2023)
+#### Cumulative Performance
 
-### Time Period 5 (1954 - 2023)
+#### Sharpe Ratio
+
+- **Logistic Regression** p-value: 49.88%
+- **Support Vector Machine** p-value: 25.52%
+- **Random Forest** p-value: 37.50%
+- **Multi-layer Perceptron** p-value: 68.74%
+
+<p align="center">
+  <img src="Test Sharpe Ratios (Time Period 3).png" alt="Test Sharpe Ratios (Time Period 3)" style="width:100%">
+</p>
+<p align="center">
+  <i>Models Sharpe Rattios vs. Benchmark Sharpe Ratios (1971 - 2023)</i>
+</p>
+
+### Time Period 4 (1965-2023 | 33 Features)
+
+#### Cumulative Performance
+
+#### Sharpe Ratio
+
+- **Logistic Regression** p-value: 52.86%
+- **Support Vector Machine** p-value: 54.15%
+- **Random Forest** p-value: 44.20%
+- **Multi-layer Perceptron** p-value: 78.83%
+
+### Time Period 5 (1954-2023 | )
+
+#### Cumulative Performance
+
+#### Sharpe Ratio
+
+- **Logistic Regression** p-value: 52.86%
+- **Support Vector Machine** p-value: 54.15%
+- **Random Forest** p-value: 44.20%
+- **Multi-layer Perceptron** p-value: 78.83%
 
 ### Time Period 6 (1929 - 2023)
+
+#### Cumulative Performance
+
+#### Sharpe Ratio
+
+
 
 #### Links
 
