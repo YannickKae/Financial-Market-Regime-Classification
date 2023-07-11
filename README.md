@@ -228,7 +228,7 @@ In conclusion, our findings show that the baseline model effectively mirrors the
 
 This respository underscores the well-known difficulty of market timing, even when leveraging advanced machine learning models. It serves as a vivid reminder of the complex, unpredictable dynamics that govern financial markets.
 
-In subsequent research, several intriguing avenues could be explored:
+In subsequent research, several ideas could be explored:
 - The potential of model ensembling, such as generalized stacking, deserves further attention. Such an approach might amalgamate the strengths of multiple models, thereby enhancing overall performance.
 - Our study has relied upon data from a diversified basket of asset classes. A more granular approach focusing on individual markets and their unique dynamics may yield more potent insights and predictions.
 - The performance of models specifically tailored for time series analysis, like Recurrent Neural Networks (RNNs), warrants investigation. Given their design, these models could potentially capture complex temporal patterns more effectively, thereby improving predictive accuracy.
