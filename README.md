@@ -35,7 +35,9 @@ $$ P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \bet
 
 $$ f(X) = sign\left(\sum_{i} α_i * y_i * K(X_i, X) - ρ\right) $$
 
-- **Random Forest** (RF): This is a bagging based ensemble technique, which creates an ensemble of multiple decision tree models and uses the majority decision of these trees for prediction. Each individual tree in the Random Forest is trained on a random subset of the training data (called bootstrap samples) and uses a random selection of features to find the best split at each node of the tree. This randomness leads to increased diversity among individual trees and helps decreasing variance.
+- **Random Forest** (RF): This is a bagging-based ensemble technique, which creates an ensemble of multiple decision tree models and uses the majority decision of these trees for prediction. Each individual tree in the Random Forest is trained on a random subset of the training data (called bootstrap samples) and uses a random selection of features to find the best split at each node of the tree. This randomness leads to increased diversity among individual trees and helps decreasing variance.
+
+(Side remark: We didn't use boosting-based ensembling techniques like XGBoost, which is considered superior among tree-based models, because it works by also correcting bias, which comes with a greater risk of overfitting. Bagging, on the other hand, only attempts to correct for variance. In finance, where data has a very low signal-to-noise ratio due to arbitrage forces, it is very easy to overfit to noise & random patterns. Therefore, bagging ensembling is more favorable in this domain).
 
 $$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
 
