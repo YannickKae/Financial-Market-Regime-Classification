@@ -37,8 +37,6 @@ $$ f(X) = sign\left(\sum_{i} α_i * y_i * K(X_i, X) - ρ\right) $$
 
 - **Random Forest** (RF): This is a bagging-based ensemble technique, which creates an ensemble of multiple decision tree models and uses the majority decision of these trees for prediction. Each individual tree in the Random Forest is trained on a random subset of the training data (called bootstrap samples) and uses a random selection of features to find the best split at each node of the tree. This randomness leads to increased diversity among individual trees and helps decreasing variance.
 
-(Side remark: We didn't use boosting-based ensembling techniques like XGBoost, which is considered superior among tree-based models, because it works by also correcting bias, which comes with a greater risk of overfitting. Bagging, on the other hand, only attempts to correct for variance. In finance, where data has a very low signal-to-noise ratio due to arbitrage forces, it is very easy to overfit to noise & random patterns. Therefore, bagging ensembling is more favorable in this domain).
-
 $$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
 
 - **Multi-layer Perceptron** (MLP): These are a type of artificial neural network consisting of at least three layers of neurons: an input layer, one or more "hidden" layers, and an output layer. Each layer is fully connected to the next, with each node receiving a weighted sum of inputs from the previous layer to which an activation function is applied.
@@ -48,6 +46,8 @@ $$ f(X) = \sigma\left( w^{[3]} \cdot \sigma\left( w^{[2]} \cdot \sigma\left( w^{
 Tuning and selection of these models was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities, which we will use to size positions in our Tatical Asset Allocation models.
 
 $$ H_{b}(y, \hat{y}) = -y \cdot log(\hat{y}) - (1 - y) \cdot log(1 - \hat{y}) $$
+
+Side remark: We didn't use boosting-based ensembling techniques like XGBoost, which is considered superior among tree-based models, because it works by also correcting bias, which comes with a greater risk of overfitting. Bagging, on the other hand, only attempts to correct for variance. In finance, where data has a very low signal-to-noise ratio due to arbitrage forces, it is very easy to overfit to noise & random patterns. Therefore, bagging ensembling is more favorable in this domain.
 
 ## Data
 
