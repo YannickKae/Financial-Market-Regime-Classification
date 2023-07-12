@@ -43,7 +43,7 @@ $$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
 
 $$ f(X) = \sigma\left( w^{[3]} \cdot \sigma\left( w^{[2]} \cdot \sigma\left( w^{[1]} X + b^{[1]} \right) + b^{[2]} \right) + b^{[3]} \right) $$
 
-Tuning and selection of these models was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities.
+Tuning and selection of these models was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities, which we will use to size positions in our Tatical Asset Allocation models.
 
 $$ H_{b}(y, \hat{y}) = -y \cdot log(\hat{y}) - (1 - y) \cdot log(1 - \hat{y}) $$
 
