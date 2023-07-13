@@ -43,7 +43,7 @@ $$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
 
 $$ f(X) = \sigma\left( w^{[3]} \cdot \sigma\left( w^{[2]} \cdot \sigma\left( w^{[1]} X + b^{[1]} \right) + b^{[2]} \right) + b^{[3]} \right) $$
 
-Tuning and selection of these models was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) instead of accuracy, because in finance not only the number of correct classifications is important, but also the corresponding probabilities, which we will use to size positions in our Tatical Asset Allocation models.
+The tuning and selection of each model was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) rather than accuracy, because not only the number of correct classifications is important, but also the corresponding probabilities, which we will use to size positions in our Tatical Asset Allocation (TAA) models.
 
 $$ H_{b}(y, \hat{y}) = -y \cdot log(\hat{y}) - (1 - y) \cdot log(1 - \hat{y}) $$
 
@@ -67,8 +67,8 @@ This iterative approach gave us the opportunity to observe and understand how th
 
 ## Results
 
-In each case, the dataset was split 70/30 into a training and a test dataset, with the former used for hyperparameter tuning, feature selection, etc., and the latter used exclusively to test the performance of the Tactical Asset Allocation (TAA) models.
-To evaluate them, we tested their respective Sharpe Ratios (SR) against the Sharpe Ratio of a naive 50/50 portfolio (BM), according to the following pair of hypotheses. To do so, we condict a bootstrapping test, assuming monthly rebalancing and no transaction costs.
+In each case, the dataset was split 70/30 into a training and a test dataset, with the former used for hyperparameter tuning, feature selection, etc., and the latter used exclusively to test the performance of the TAA models.
+To evaluate them, we tested their respective Sharpe Ratios (SR) against the SR of a naive 50/50 portfolio (BM), according to the following pair of hypotheses. To do so, we perform a bootstrapping test, assuming monthly rebalancing and no transaction costs.
 
 $$ H_0 : SR_{TAA} \leq SR_{BM} $$
 
