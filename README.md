@@ -112,10 +112,10 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 
 #### Sharpe Ratio
 
-- **Logistic Regression** p-value: 52.25%
-- **Support Vector Machine** p-value: 61.72%
-- **Random Forest** p-value: 59.88%
-- **Multi-layer Perceptron** p-value: 46.12%
+- **Logistic Regression** p-value: 51.25%
+- **Support Vector Machine** p-value: 60.72%
+- **Random Forest** p-value: 50.88%
+- **Multi-layer Perceptron** p-value: 62.12%
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 2).png" alt="Test Sharpe Ratios (Time Period 2)" style="width:100%">
@@ -137,9 +137,9 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 
 #### Sharpe Ratio
 
-- **Logistic Regression** p-value: 49.88%
-- **Support Vector Machine** p-value: 25.52%
-- **Random Forest** p-value: 37.50%
+- **Logistic Regression** p-value: 50.88%
+- **Support Vector Machine** p-value: 51.52%
+- **Random Forest** p-value: 48.50%
 - **Multi-layer Perceptron** p-value: 68.74%
 
 <p align="center">
@@ -162,10 +162,10 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 
 #### Sharpe Ratio
 
-- **Logistic Regression** p-value: 52.86%
-- **Support Vector Machine** p-value: 54.15%
+- **Logistic Regression** p-value: 50.86%
+- **Support Vector Machine** p-value: 38.15%
 - **Random Forest** p-value: 44.20%
-- **Multi-layer Perceptron** p-value: 78.83%
+- **Multi-layer Perceptron** p-value: 68.83%
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 4).png" alt="Test Sharpe Ratios (Time Period 4)" style="width:100%">
@@ -188,9 +188,9 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 #### Sharpe Ratio
 
 - **Logistic Regression** p-value: 50.80%
-- **Support Vector Machine** p-value: 61.50%
-- **Random Forest** p-value: 45.02%
-- **Multi-layer Perceptron** p-value: 30.33%
+- **Support Vector Machine** p-value: 54.50%
+- **Random Forest** p-value: 49.02%
+- **Multi-layer Perceptron** p-value: 40.33%
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 5).png" alt="Test Sharpe Ratios (Time Period 5)" style="width:100%">
@@ -213,9 +213,9 @@ $$ H_1 : SR_{TAA} > SR_{BM} $$
 #### Sharpe Ratio
 
 - **Logistic Regression** p-value: 50.63%
-- **Support Vector Machine** p-value: 61.16%
-- **Random Forest** p-value: 41.09%
-- **Multi-layer Perceptron** p-value: 90.43%
+- **Support Vector Machine** p-value: 59.16%
+- **Random Forest** p-value: 48.09%
+- **Multi-layer Perceptron** p-value: 80.43%
 
 <p align="center">
   <img src="Test Sharpe Ratios (Time Period 6).png" alt="Test Sharpe Ratios (Time Period 6)" style="width:100%">
