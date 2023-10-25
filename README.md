@@ -234,4 +234,4 @@ Several ideas could be explored in further research:
 - The potential of model ensembling, such as generalized stacking, deserves further attention. Such an approach could combine the strengths of multiple models, thereby improving overall performance.
 - Our study relied on data from diversified baskets of asset classes. A more granular approach, focusing on individual markets and their unique dynamics, may yield stronger insights and predictions.
 - The performance of models specifically designed for time series problems, such as recurrent neural networks (RNNs), warrants investigation.
-- The class probabilities are not calibrated. Conformal Prediction should therefore be applied.
+- The class probabilities should be calibrated.
