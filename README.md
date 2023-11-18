@@ -8,7 +8,7 @@
 </p>
 
 Following the financial crisis, quantitative cross-sectional value strategies, expecially in equities, have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes based on four distinct supervised machine learning methods for binary (Value vs. Momentum) regime classification.
-Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), we focused on the following methods:
+Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers/v15/delgado14a.html), I focused on the following methods:
 
 - Logistic Regression (baseline model)
 - Random Forest
@@ -23,7 +23,7 @@ Due to the results of [Fernández-Delgado et al. (2014)](https://jmlr.org/papers
 
 - **Momentum** focuses on the recent price performance of securities, assuming that those with strong recent performance will continue to perform strong in the future, and vice versa. This approach is based on the idea that market trends and investor sentiment can drive the price of a security, and these trends may persist for some time before reversing. Side remark: Momentum is not Growth, the actual antagonist of Value.
 
-Both strategies typically exhibit negative correlation, as value is countercyclical while momentum is procyclical. Consequently, we will divide the current market state along this cycle-based value vs. momentum dimension. That both are, on average, profitable — which may appear paradox — can be explained by value operating on longer-term time frames, while momentum operates on shorter-term time frames.
+Both strategies typically exhibit negative correlation, as value is countercyclical while momentum is procyclical. Consequently, I will divide the current market state along this cycle-based value vs. momentum dimension. That both are, on average, profitable — which may appear paradox — can be explained by value operating on longer-term time frames, while momentum operates on shorter-term time frames.
 
 ### Methods
 
@@ -31,7 +31,7 @@ Both strategies typically exhibit negative correlation, as value is countercycli
 
 $$ P(Y=1|X) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + ... + \beta_n X_n)}} $$
 
-- **Support Vector Machines** (SVM): In the context of binary classification, SVMs attempt to find an optimal hyperplane that separates the two classes. Specifically, we use the C-Support Vector Classification (C-SVC) variant because it is particularly good at avoiding overfitting based on the regularization hyper paramater 'C'. Technically, it controls the trade-off between achieving the largest possible margin and minimizing classification errors.
+- **Support Vector Machines** (SVM): In the context of binary classification, SVMs attempt to find an optimal hyperplane that separates the two classes. Specifically, I use the C-Support Vector Classification (C-SVC) variant because it is particularly good at avoiding overfitting based on the regularization hyper paramater 'C'. Technically, it controls the trade-off between achieving the largest possible margin and minimizing classification errors.
 
 $$ f(X) = sign\left(\sum_{i} α_i * y_i * K(X_i, X) - ρ\right) $$
 
@@ -43,18 +43,18 @@ $$ f(x) = mode\left({T_1(x), T_2(x), ..., T_B(x)}\right) $$
 
 $$ f(X) = \sigma\left( w^{[3]} \cdot \sigma\left( w^{[2]} \cdot \sigma\left( w^{[1]} X + b^{[1]} \right) + b^{[2]} \right) + b^{[3]} \right) $$
 
-The tuning and selection of each model was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) rather than accuracy, because not only the number of correct classifications is important, but also the corresponding probabilities, which we will use to size positions in our Tatical Asset Allocation (TAA) models.
+The tuning and selection of each model was done by cross-validation based on binary [cross entropy](https://en.wikipedia.org/wiki/Cross_entropy) rather than accuracy, because not only the number of correct classifications is important, but also the corresponding probabilities, which I will use to size positions in our Tatical Asset Allocation (TAA) models.
 
 $$ H_{b}(y, \hat{y}) = -y \cdot log(\hat{y}) - (1 - y) \cdot log(1 - \hat{y}) $$
 
-Side remark: We didn't use boosting-based ensembling techniques like XGBoost, which is considered superior among tree-based models, because it works by also correcting bias, which comes with a greater risk of overfitting. Bagging, on the other hand, only attempts to correct for variance. In finance, where data has a very low signal-to-noise ratio due to arbitrage forces, it is very easy to overfit to noise & random patterns. Therefore, bagging ensembling is more favorable in this domain.
+Side remark: I didn't use boosting-based ensembling techniques like XGBoost, which is considered superior among tree-based models, because it works by also correcting bias, which comes with a greater risk of overfitting. Bagging, on the other hand, only attempts to correct for variance. In finance, where data has a very low signal-to-noise ratio due to arbitrage forces, it is very easy to overfit to noise & random patterns. Therefore, bagging ensembling is more favorable in this domain.
 
 ## Data
 
-From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), we had access to monthly returns for both strategies dating back to 1926. Using this data, we extracted additional features, including rolling cumulative performance, volatility, and correlation. We supplemented them with key financial macroeconomic indicators sourced from the [FRED database](https://stlouisfed.shinyapps.io/macro-snapshot/#financial).
+From the [AQR Capital Management database](https://www.aqr.com/Insights/Datasets/Century-of-Factor-Premia-Monthly), I had access to monthly returns for both strategies dating back to 1926. Using this data, I extracted additional features, including rolling cumulative performance, volatility, and correlation. I supplemented them with key financial macroeconomic indicators sourced from the [FRED database](https://stlouisfed.shinyapps.io/macro-snapshot/#financial).
 
-The data from the latter varied in length, confronting us with a challenging trade-off - should we prioritize having more features or more historical data? To resolve this, we conducted a bootstrapping test. The purpose of this was to ascertain whether shorter feature time series were redundant (null hypothesis) and therefore could be discarded in favor of having more historical data, or not (alternative hypothesis).
-The null hat to be rejected multiple times. Consequently, we repeated the models' training and testing process multiple times, using different data sets along the described trade-off.
+The data from the latter varied in length, confronting us with a challenging trade-off - should I prioritize having more features or more historical data? To resolve this, we conducted a bootstrapping test. The purpose of this was to ascertain whether shorter feature time series were redundant (null hypothesis) and therefore could be discarded in favor of having more historical data, or not (alternative hypothesis).
+The null hat to be rejected multiple times. Consequently, I repeated the models' training and testing process multiple times, using different data sets along the described trade-off.
 
 This iterative approach gave us the opportunity to observe and understand how this trade-off played out in our specific case.
 
@@ -68,7 +68,7 @@ This iterative approach gave us the opportunity to observe and understand how th
 ## Results
 
 In each case, the dataset was split 70/30 into a training and a test dataset, with the former used for hyperparameter tuning, feature selection, etc., and the latter used exclusively to test the performance of the TAA models.
-To evaluate them, we tested their respective Sharpe Ratios (SR) against the SR of a naive 50/50 portfolio (BM), according to the following pair of hypotheses. To do so, we perform a bootstrapping test, assuming monthly rebalancing and no transaction costs.
+To evaluate them, I tested their respective Sharpe Ratios (SR) against the SR of a naive 50/50 portfolio (BM), according to the following pair of hypotheses. To do so, I perform a bootstrapping test, assuming monthly rebalancing and no transaction costs.
 
 $$ H_0 : SR_{TAA} \leq SR_{BM} $$
 
