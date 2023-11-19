@@ -106,6 +106,85 @@ def r_squared_bootstrap_test(ts1, ts2, n_permutations):
     plt.show()
 
 
+# A more general test function, which allows to choose from pearson's correlation, kendall's tau or spearman's rho
+
+def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic = 'correlation'):
+    
+    def standardize_series(s):
+        scaler = StandardScaler()
+        s_values_scaled = scaler.fit_transform(s.values.reshape(-1, 1))
+        return pd.Series(s_values_scaled.flatten(), index=s.index)
+    
+    # Standardize the time series
+    ts1 = standardize_series(ts1)
+    ts2 = standardize_series(ts2)
+    
+    # Select the test statistic function
+    if test_statistic == 'correlation':
+        stat_func = lambda x, y: np.corrcoef(x, y)[0, 1]
+    elif test_statistic == 'kendall':
+        stat_func = lambda x, y: kendalltau(x, y)[0]
+    elif test_statistic == 'spearman':
+        stat_func = lambda x, y: spearmanr(x, y)[0]
+    else:
+        raise ValueError("Invalid test statistic. Choose 'correlation', 'kendall', or 'spearman'.")
+    
+    # Adjust ts2 based on the chosen statistic
+    if stat_func(ts1, ts2) < 0:
+        ts2 = ts2 * -1
+
+    # Calculate observed R^2
+    observed_stat = stat_func(ts1, ts2)
+
+    # Calculate differences between ts2 and ts1
+    differences = ts2 - ts1
+    differences_values = differences.values
+    
+    # Check if differences are all zeros
+    if np.all(differences_values == 0):
+        #print("Both time series are redundant (identical after standardization).")
+        return 1
+
+    # Calculate optimal block length
+    opt_block_length_df = optimal_block_length(differences_values)
+    opt_block_length = int(opt_block_length_df['circular'])  # Use the optimal block length
+    
+    # Check if the optimal block length is zero, if so, set it to 1
+    if opt_block_length == 0:
+        opt_block_length = 1
+
+    # Initialize circular block bootstrap with optimal block length
+    bs = CircularBlockBootstrap(opt_block_length, differences_values)
+
+    # Compute R^2 for bootstrapped series and generate null distribution
+    null_stats = []
+    for _, bs_diffs in zip(range(n_permutations), bs.bootstrap(n_permutations)):
+        # Generate new ts2 by adding bootstrapped differences to ts1
+        # Ensure that ts2_new has the same length as ts1 by discarding extra values or padding with zeros
+        bs_diffs_trimmed = bs_diffs[0][0][:len(ts1)]
+        ts2_new = ts1 + pd.Series(bs_diffs_trimmed, index=ts1.index)
+        stat = stat_func(ts1, ts2_new)
+        null_stats.append(stat)  # Store Stat for each bootstrapped series
+
+    # Compute p-value: proportion of null R^2 values greater than or equal to observed R^2
+    p_value = np.mean(np.array(null_stats) <= observed_stat)
+    
+    return p_value
+
+    # Output
+    print(f"Observed {test_statistic}: {observed_stat}, p-value: {p_value}")
+
+    # Plotting
+    plt.figure(figsize=(11, 6), dpi=100)
+    plt.hist(null_stats, bins=100, color='black')
+    plt.axvline(observed_stat, color='red', linestyle='dashed', linewidth=2, label=f'Observed {test_statistic}: {observed_stat:.2f}')
+    plt.legend()
+    plt.xlabel(test_statistic)
+    plt.ylabel('Frequency')
+    plt.title(f'Null distribution of {test_statistic}')
+    plt.show()
+
+
 # The following function takes a set of variables, computes the pairwise R^2 of one of them to all the others and ranks them.
 
 def plot_r_squared(dataframe, column_name):
