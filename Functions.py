@@ -126,11 +126,13 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
         stat_func = lambda x, y: kendalltau(x, y)[0]
     elif test_statistic == 'spearman':
         stat_func = lambda x, y: spearmanr(x, y)[0]
+    elif test_statistic == 'distance_correlation':
+        stat_func = lambda x, y: dcor.distance_correlation(x, y)    
     else:
-        raise ValueError("Invalid test statistic. Choose 'correlation', 'kendall', or 'spearman'.")
+        raise ValueError("Invalid test statistic. Choose 'correlation', 'kendall', 'spearman' or 'distance_correlation'.")
     
     # Adjust ts2 based on the chosen statistic
-    if stat_func(ts1, ts2) < 0:
+    if np.corrcoef(ts1, ts2)[0, 1] < 0:
         ts2 = ts2 * -1
 
     # Calculate observed R^2
@@ -168,8 +170,6 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
 
     # Compute p-value: proportion of null R^2 values greater than or equal to observed R^2
     p_value = np.mean(np.array(null_stats) <= observed_stat)
-    
-    return p_value
 
     # Output
     print(f"Observed {test_statistic}: {observed_stat}, p-value: {p_value}")
