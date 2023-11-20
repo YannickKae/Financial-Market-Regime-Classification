@@ -110,17 +110,18 @@ def r_squared_bootstrap_test(ts1, ts2, n_permutations):
 
 def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic = 'correlation'):
     
-    # Stelle sicher, dass beide Zeitreihen dieselbe Länge haben
+    # same length
     min_length = min(len(ts1), len(ts2))
     ts1 = ts1.iloc[-min_length:]
     ts2 = ts2.iloc[-min_length:]
-    
+
+    # standardizer
     def standardize_series(s):
         scaler = StandardScaler()
         s_values_scaled = scaler.fit_transform(s.values.reshape(-1, 1))
         return pd.Series(s_values_scaled.flatten(), index=s.index)
     
-    # Standardize the time series
+    # Standardizing
     ts1 = standardize_series(ts1)
     ts2 = standardize_series(ts2)
     
@@ -134,13 +135,13 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     elif test_statistic == 'distance_correlation':
         stat_func = lambda x, y: dcor.distance_correlation(x, y)
     elif test_statistic == 'pps':
-        # Konvertieren in DataFrames und Spaltennamen zuweisen
+        # pps need dataframes
         df = pd.DataFrame({'ts1': ts1, 'ts2': ts2})
         stat_func = lambda df, x_col, y_col: pps.score(df, x_col, y_col)['ppscore']
     else:
         raise ValueError("Invalid test statistic. Choose 'correlation', 'kendall', 'spearman' or 'distance_correlation'.")
     
-    # Adjust ts2 based on the chosen statistic
+    # Adjust ts2 based on correlation
     if np.corrcoef(ts1, ts2)[0, 1] < 0:
         ts2 = ts2 * -1
 
@@ -177,16 +178,16 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
         # Ensure that ts2_new has the same length as ts1 by discarding extra values or padding with zeros
         bs_diffs_trimmed = bs_diffs[0][0][:len(ts1)]
         ts2_new = ts1 + pd.Series(bs_diffs_trimmed, index=ts1.index)
-        # Überprüfe, ob PPS als Teststatistik verwendet wird
+        # check wether pps is choosen
         if test_statistic == 'pps':
-            # Erstelle einen temporären DataFrame für die neue bootstrapped Serie
+            # data frame gain
             temp_df = pd.DataFrame({'ts1': ts1, 'ts2': ts2_new})
             stat = stat_func(temp_df, 'ts1', 'ts2')
         else:
             stat = stat_func(ts1, ts2_new)
         null_stats.append(stat)  # Store Stat for each bootstrapped series
 
-    # Compute p-value: proportion of null R^2 values greater than or equal to observed R^2
+    # p-value: proportion of null stat values smaller than or equal to observed one
     p_value = np.mean(np.array(null_stats) <= observed_stat)
 
     # Output
