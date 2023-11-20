@@ -110,6 +110,11 @@ def r_squared_bootstrap_test(ts1, ts2, n_permutations):
 
 def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic = 'correlation'):
     
+    # Stelle sicher, dass beide Zeitreihen dieselbe Länge haben
+    min_length = min(len(ts1), len(ts2))
+    ts1 = ts1.iloc[-min_length:]
+    ts2 = ts2.iloc[-min_length:]
+    
     def standardize_series(s):
         scaler = StandardScaler()
         s_values_scaled = scaler.fit_transform(s.values.reshape(-1, 1))
@@ -129,6 +134,7 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     elif test_statistic == 'distance_correlation':
         stat_func = lambda x, y: dcor.distance_correlation(x, y)
     elif test_statistic == 'pps':
+        # Konvertieren in DataFrames und Spaltennamen zuweisen
         df = pd.DataFrame({'ts1': ts1, 'ts2': ts2})
         stat_func = lambda df, x_col, y_col: pps.score(df, x_col, y_col)['ppscore']
     else:
@@ -164,7 +170,7 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     # Initialize circular block bootstrap with optimal block length
     bs = CircularBlockBootstrap(opt_block_length, differences_values)
 
-    # Compute stats for bootstrapped series and generate null distribution
+    # Compute R^2 for bootstrapped series and generate null distribution
     null_stats = []
     for _, bs_diffs in zip(range(n_permutations), bs.bootstrap(n_permutations)):
         # Generate new ts2 by adding bootstrapped differences to ts1
