@@ -127,7 +127,10 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     elif test_statistic == 'spearman':
         stat_func = lambda x, y: spearmanr(x, y)[0]
     elif test_statistic == 'distance_correlation':
-        stat_func = lambda x, y: dcor.distance_correlation(x, y)    
+        stat_func = lambda x, y: dcor.distance_correlation(x, y)
+    elif test_statistic == 'pps':
+        df = pd.DataFrame({'ts1': ts1, 'ts2': ts2})
+        stat_func = lambda df, x_col, y_col: pps.score(df, x_col, y_col)['ppscore']
     else:
         raise ValueError("Invalid test statistic. Choose 'correlation', 'kendall', 'spearman' or 'distance_correlation'.")
     
@@ -135,8 +138,11 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     if np.corrcoef(ts1, ts2)[0, 1] < 0:
         ts2 = ts2 * -1
 
-    # Calculate observed R^2
-    observed_stat = stat_func(ts1, ts2)
+    # Calculate observed statistic
+    if test_statistic == 'pps':
+        observed_stat = stat_func(df, 'ts1', 'ts2')  # Verwenden des DataFrames für PPS
+    else:
+        observed_stat = stat_func(ts1, ts2)  # Verwenden der Serien für andere Statistiken
 
     # Calculate differences between ts2 and ts1
     differences = ts2 - ts1
@@ -158,14 +164,20 @@ def redundancy_bootstrap_test(ts1, ts2, n_permutations = 100000, test_statistic 
     # Initialize circular block bootstrap with optimal block length
     bs = CircularBlockBootstrap(opt_block_length, differences_values)
 
-    # Compute R^2 for bootstrapped series and generate null distribution
+    # Compute stats for bootstrapped series and generate null distribution
     null_stats = []
     for _, bs_diffs in zip(range(n_permutations), bs.bootstrap(n_permutations)):
         # Generate new ts2 by adding bootstrapped differences to ts1
         # Ensure that ts2_new has the same length as ts1 by discarding extra values or padding with zeros
         bs_diffs_trimmed = bs_diffs[0][0][:len(ts1)]
         ts2_new = ts1 + pd.Series(bs_diffs_trimmed, index=ts1.index)
-        stat = stat_func(ts1, ts2_new)
+        # Überprüfe, ob PPS als Teststatistik verwendet wird
+        if test_statistic == 'pps':
+            # Erstelle einen temporären DataFrame für die neue bootstrapped Serie
+            temp_df = pd.DataFrame({'ts1': ts1, 'ts2': ts2_new})
+            stat = stat_func(temp_df, 'ts1', 'ts2')
+        else:
+            stat = stat_func(ts1, ts2_new)
         null_stats.append(stat)  # Store Stat for each bootstrapped series
 
     # Compute p-value: proportion of null R^2 values greater than or equal to observed R^2
