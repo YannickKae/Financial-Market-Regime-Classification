@@ -19,7 +19,7 @@ def sharpe_ratio_bootstrap_test(sample1, sample2, n_permutations=1000000):
     observed_sharpe_ratio = observed_mean_return / observed_std_return
 
     # Calculate p-value: proportion of null Sharpe ratios more extreme than observed Sharpe ratio
-    p_value = (np.abs(sharpe_ratios) >= np.abs(observed_sharpe_ratio)).mean()
+    p_value = (np.array(sharpe_ratios) >= observed_sharpe_ratio).mean()
     
     # Output
     print(f"p-value: {p_value*100:.2f}%")  # Print the calculated p-value as a percentage with two decimal points
