@@ -18,6 +18,11 @@ def sharpe_ratio_bootstrap_test(sample1, sample2, n_permutations=1000000):
     observed_std_return = np.std(sample2)
     observed_sharpe_ratio = observed_mean_return / observed_std_return
 
+    # Compute the Benchmark Sharpe ratio for sample1
+    benchmark_mean_return = np.mean(sample1)
+    benchmark_std_return = np.std(sample1)
+    benchmark_sharpe_ratio = benchmark_mean_return / benchmark_std_return    
+
     # Calculate p-value: proportion of null Sharpe ratios more extreme than observed Sharpe ratio
     p_value = (np.array(sharpe_ratios) >= observed_sharpe_ratio).mean()
     
@@ -29,6 +34,8 @@ def sharpe_ratio_bootstrap_test(sample1, sample2, n_permutations=1000000):
     plt.hist(sharpe_ratios, bins=100, color='black')
     plt.axvline(observed_sharpe_ratio, color='red', linestyle='dashed', linewidth=2,
                 label=f'Model Sharpe Ratio: {observed_sharpe_ratio:.2f}')
+    plt.axvline(benchmark_sharpe_ratio, color='blue', linestyle='dashed', linewidth=2,
+                label=f'Benchmark Sharpe Ratio: {benchmark_sharpe_ratio:.2f}')
     plt.legend()
     plt.xlabel('Sharpe Ratio')
     plt.ylabel('frequency')
