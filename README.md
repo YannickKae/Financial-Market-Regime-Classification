@@ -1,10 +1,10 @@
 # Financial Market Regime Classification
 
 <p align="center">
-  <img src="monte_carlo_simulation_log_scale.png" alt="monte_carlo_simulation_log_scale.png" style="width:100%">
+  <img src="Value vs. Momentum.png" style="width:100%">
 </p>
 <p align="center">
-  <i>Monte Carlo Simulation of a Investment Strategy with a Sharpe Ratio of 1.0</i>
+  <i>Cross-Asset Value vs. Momentum</i>
 </p>
 
 Following the financial crisis, quantitative cross-sectional value strategies, expecially in equities, have experienced a decade of relative underperformance, making it challenging to maintain commitment to them. This repository aims to identify correponding regimes and implement tactical allocation changes based on four distinct supervised machine learning methods for binary (Value vs. Momentum) regime classification.
